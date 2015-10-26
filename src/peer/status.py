@@ -42,7 +42,7 @@ def _status(remotehost="localhost",recursion=False):
 
     # step through the output and build the dict
     for line in response:
-        if line == "No peers present":
+        if (line == "No peers present") or (line == "Number of Peers: 0"):
             peerstatus["peers"] = 0
             return peerstatus
         m = re.match("^Number of Peers: (\d+)$", line)
