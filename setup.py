@@ -20,7 +20,7 @@ from distutils.core import setup
 setup(name='python-gluster',
         version='0.2',
         license='GPLv3',
-        package_dir={'gluster': 'src'},
+        package_dir={'gluster': 'src/gluster'},
         packages=[
             'gluster',
             'gluster.peer',
