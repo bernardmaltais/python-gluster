@@ -89,7 +89,7 @@ class Peer(object):
         return True
 
     def status(self):
-        self.__status()
+        return self.__status()
 
     def __status(self, remote_host = None, recursion = False):
         if remote_host is None:
