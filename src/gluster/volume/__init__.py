@@ -1,4 +1,4 @@
-#    Copyright 2014, 2015 Joe Julian <me@joejulian.name>
+#    Copyright 2014, 2015 Sebastien LANGOUREAUX <linuxworkgroup@hotmail.com>
 #
 #    This file is part of python-gluster.
 #
@@ -15,21 +15,4 @@
 #    You should have received a copy of the GNU General Public License
 #    along with python-gluster.  If not, see <http://www.gnu.org/licenses/>.
 #
-class GlusterError(Exception):
-    def __init__(self,value):
-        self.value = value
-    def _str_(self):
-        return repr(self.value)
-
-class GlusterWarning(Warning):
-    def __init__(self,value):
-        self.value = value
-    def _str_(self):
-        return repr(self.value)
-
-import os,sys
-if not os.geteuid()==0:
-    raise GlusterError("Gluster commands require root permissions.")
-        
-import peer
-import volume
+__author__ = 'Sebastien LANGOUREAUX'

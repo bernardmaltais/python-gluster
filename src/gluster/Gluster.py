@@ -1,4 +1,4 @@
-#    Copyright 2014, 2015 Joe Julian <me@joejulian.name>
+#    Copyright 2014, 2015 Sebastien LANGOUREAUX <linuxworkgroup@hotmail.com>
 #
 #    This file is part of python-gluster.
 #
@@ -15,6 +15,23 @@
 #    You should have received a copy of the GNU General Public License
 #    along with python-gluster.  If not, see <http://www.gnu.org/licenses/>.
 #
-from status import status
-from probe import probe
-from detach import detach
+__author__ = 'Sebastien LANGOUREAUX'
+
+
+from gluster.peer.Peer import Peer
+from gluster.volume.Volume import Volume
+
+
+class Gluster(object):
+
+    def __init__(self, remote_host = 'localhost'):
+        self.__peer_manager = Peer(remote_host)
+        self.__volume_manager = Volume(remote_host)
+
+    def get_peer_manager(self):
+        return self.__peer_manager
+
+    def get_volume_manager(self):
+        return self.__volume_manager
+
+

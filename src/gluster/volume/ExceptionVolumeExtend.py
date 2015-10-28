@@ -1,4 +1,4 @@
-#    Copyright 2014, 2015 Joe Julian <me@joejulian.name>
+#    Copyright 2014, 2015 Sebastien LANGOUREAUX <linuxworkgroup@hotmail.com>
 #
 #    This file is part of python-gluster.
 #
@@ -15,5 +15,10 @@
 #    You should have received a copy of the GNU General Public License
 #    along with python-gluster.  If not, see <http://www.gnu.org/licenses/>.
 #
-from info import info
-from create import create
+__author__ = 'Sebastien LANGOUREAUX'
+
+
+class ExceptionVolumeExtend(Exception):
+    def __init__(self, message):
+        super(ExceptionVolumeExtend, self).__init__(message)
+        self.message = message

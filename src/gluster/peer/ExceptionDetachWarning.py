@@ -1,4 +1,4 @@
-#    Copyright 2014, 2015 Joe Julian <me@joejulian.name>
+#    Copyright 2014, 2015 Sebastien LANGOUREAUX <linuxworkgroup@hotmail.com>
 #
 #    This file is part of python-gluster.
 #
@@ -15,15 +15,9 @@
 #    You should have received a copy of the GNU General Public License
 #    along with python-gluster.  If not, see <http://www.gnu.org/licenses/>.
 #
-from distutils.core import setup
+__author__ = 'Sebastien LANGOUREAUX'
 
-setup(name='python-gluster',
-        version='0.2',
-        license='GPLv3',
-        package_dir={'gluster': 'src'},
-        packages=[
-            'gluster',
-            'gluster.peer',
-            'gluster.volume',
-            ],
-        )
+class ExceptionDetachWarning(Exception):
+    def __init__(self, message):
+        super(ExceptionDetachWarning, self).__init__(message)
+        self.message = message
