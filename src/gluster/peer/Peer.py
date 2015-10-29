@@ -48,11 +48,10 @@ class Peer(object):
         try:
             response = subprocess.check_output([
                 "/usr/sbin/gluster",
-                "--remote-host=%s" % self.__remote_host,
                 "peer",
                 "probe",
                 peer])
-            if response == "Probe on localhost not needed":
+            if response == "peer probe: success. Probe on localhost not needed":
                 raise ExceptionProbeLocalhost(response)
             if response[:13] == "Probe on host":
                 raise ExceptionProbeWarning(response)
@@ -70,7 +69,6 @@ class Peer(object):
         try:
             response = subprocess.check_output([
                 "/usr/sbin/gluster",
-                "--remote-host=%s" % self.__remote_host,
                 "peer",
                 "detach",
                 peer])
@@ -142,6 +140,6 @@ class Peer(object):
                 hostname = m.group(1)
             m = re.match("State: (.+)", line)
             if m:
-                peerstatus["host"][hostname]["state"][remotehost] = m.group(1)
+                peerstatus["host"][hostname]["state"][remote_host] = m.group(1)
 
         return peerstatus

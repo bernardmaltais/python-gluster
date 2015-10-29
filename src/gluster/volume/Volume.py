@@ -45,7 +45,6 @@ class Volume(object):
             raise KeyError("Volume must have bricks")
 
         program = ["/usr/sbin/gluster",
-            "--remote-host=%s" % self.__remote_host,
             "volume",
             "create",
             name,
@@ -71,7 +70,7 @@ class Volume(object):
 
         try:
             response = subprocess.check_output(program).split("\n")
-            success = "Creation of volume %s has been successful. Please start the volume to access data." % name
+            success = "volume create: %s: success: please start the volume to access data" % name
             if not success in response:
                 raise ExceptionVolumeCreate(response)
         except subprocess.CalledProcessError,e:
@@ -79,7 +78,6 @@ class Volume(object):
 
         # We start volume
         program = ["/usr/sbin/gluster",
-            "--remote-host=%s" % self.__remote_host,
             "volume",
             "start",
             name,
@@ -96,7 +94,6 @@ class Volume(object):
         time.sleep(1)
         if quota is not None:
             program = ["/usr/sbin/gluster",
-                "--remote-host=%s" % self.__remote_host,
                 "volume",
                 "quota",
                 name,
@@ -112,7 +109,6 @@ class Volume(object):
 
             # We set the quota
             program = ["/usr/sbin/gluster",
-                "--remote-host=%s" % self.__remote_host,
                 "volume",
                 "quota",
                 name,
@@ -141,7 +137,6 @@ class Volume(object):
             raise KeyError("Volume must have bricks")
 
         program = ["/usr/sbin/gluster",
-            "--remote-host=%s" % self.__remote_host,
             "volume",
             "add-brick",
             name
