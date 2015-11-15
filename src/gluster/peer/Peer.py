@@ -100,7 +100,10 @@ class Peer(object):
         try:
             response = subprocess.check_output(program,stderr=subprocess.STDOUT).split("\n")
         except subprocess.CalledProcessError,e:
-            raise ExceptionGluster(e.output)
+            if recursion is False:
+                raise ExceptionGluster(e.output)
+            else:
+                print("Remote host '" + remote_host + "' seems offline")
 
         # step through the output and build the dict
         for line in response:
