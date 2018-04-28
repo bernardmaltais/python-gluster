@@ -144,7 +144,7 @@ class Volume(object):
 
         if replica is not None and replica > 0:
             program.append("replica")
-            program.append(replica)
+            program.append(str(replica))
 
         for brick in list_bricks:
             program.append(brick)
